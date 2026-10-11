@@ -1,0 +1,16 @@
+version: "1"
+
+monitors:
+  - id: suumo-listing-count
+    name: "SUUMO Tokyo Listings"
+    url: "https://suumo.jp/chintai/tokyo/new/"
+    selectors:
+      - name: count
+        type: css
+        value: ".paginate_set-hit"
+        match:
+          type: regex
+          pattern: "([0-9,]+)件"  # Extracts: 401,965
+
+# Output paths are auto-derived from config filename:
+# config.yaml → data/config-state.json, data/config-history.csv
